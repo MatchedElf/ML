@@ -23,19 +23,19 @@ double loss(double* x, double* y, double T1, double T2)
 
 	return loss;
 }
-
+//Функция считает лосс
 int main()
 {
 	int max_iter = 1000000;
-	double step = 0.001;
+	double step = 0.00001;
 	int a;
 	int b;
 
 	int i;
 	int j = 0;
 
-	double T1 = -3;
-	double T2 = 2;
+	double T1 = 0;
+	double T2 = 0;//начальные значения тетта
 
 	int size = 354;
 
@@ -50,7 +50,7 @@ int main()
 		if (i % (max_iter / 100) == 0)
 		{
 			printf("%d ", i / (max_iter / 100) );
-		}
+		}//Показывает процент выполнения задачи
 
 		for (a = -1; a <= 1; a++)
 		{
@@ -64,16 +64,16 @@ int main()
 					break;
 				}
 			}
-		}
+		}//выбор направления движения по оси Т1 и Т2, исходя из наименьшего значения лосс
 	}
 
 	printf("\nT1 = %lf\nT2 = %lf\n", T1, T2);
 
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 54; i++)
 	{
 		printf("y[i] = %lf\ny predicted = %lf\n\n", y[i], x[j] * T1 + x[j + 1] * T2);
 		j += 2;
-	}
+	}//вывод предсказаний, по найденным тетта
 
 
 	return 0;
